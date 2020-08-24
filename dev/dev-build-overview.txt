@@ -1,0 +1,75 @@
+Main
+	- C1
+		- Project viewer
+		- Major section
+			- Tasks added here will have the following options
+				- ADD NOTE - Adds a note user the task. notes will have the following option.
+					- EDIT - Edits the note
+					- REMOVE - Removes the note
+				- REMOVE - Removes the task
+				- LOCK - Locks the task from being modified, will unlock if clicked again.
+		- Minor section
+			- Tasks added here will have the following options
+				- CURRENT - Sets task as current(C2)
+				- COMPLETE - Removes the task and move task to completed container
+				- REMOVE - Removes the task
+		- Schedule
+			- User can schedule tasks which will be added here
+			- Tasks that are upcoming will be highlighted green1
+			- Tasks that have passed will be highlighted orange
+			- Tasks that have long passed will be highlighted red
+			- Tasks that are not near will be highlighted gray
+			- User can change the status of the task to completed which will change the task to green2
+				- User should only be able to update the task if time has passed
+			- User can update the task and have it be set furthur or closer
+			- User can remove a task from the schedule
+		- General
+			- When user completes a task in minor or schedule they are given an option to add a note before
+			  it gets sent to the completed container
+
+	- C2
+		- Gives the user control over C1 by allowing them to add task to major and minor branch as well 
+		  as schedule reminders/tasks.
+		  	- ADD MAJOR - field
+		  	- ADD MINOR - field
+		- From C1 allows the user to set the current task, only for minor tasks.
+			- CURRENT - field
+		- User can check all completed tasks(minor).
+			- major tasks can only be toggled off, cannot be completed.
+			- COMPLETED - field
+
+	- C3
+		- Tool bar?
+		- Contains buttons to access tools(secondary) as well as controls how the app interacts with the file
+		  system.
+			- User can create and load projects
+			- User can save projects - might be autosaved by default
+			- User can export projects as a text file
+			- User can access (secondary) tools
+		- The buttons that control interation with the file system should have a clear separator from 
+		  the buttons that create tools.
+		- The tools button should collapse.
+
+Secondary
+	- Calculator/GPH
+		- User can perform basic calculations (+,-,*,/)
+		- User can perform basic scientific calculations
+		- User can perform graph basic functions
+
+	- Notebooks
+		- User can create, save, edit notebooks
+		- Each notebook will be unique to each project
+			- Each notebook can be viewed without this app. ie. pdf or img format etc..
+
+	- Whiteboard(Probably not?)
+		- User can create, save, edit whiteboards
+
+	- Pomodoro/Timer
+		- User can set a timer asc/desc
+		- User can set an alert after x amount of time has passed
+			- The alert should alert user even if they're not directly viewing the app
+			
+	- Dictionary
+		- User can lookup words - both offline/online
+			- offline uses owlbot-js? while online either screenscrapes from google or
+			  opens up google search in another window.
