@@ -5,8 +5,18 @@
 	--font-color: white;
 }
 
+@font-face {
+    font-family: 'rowdies';
+    src: url('fonts/rowdies-light-webfont.woff2') format('woff2'),
+         url('fonts/rowdies-light-webfont.woff') format('woff');
+}
+
 body {
 	background: var(--bg-color-0);
+}
+
+* {
+	font-family: rowdies;;
 }
 
 #container-main {
@@ -50,14 +60,21 @@ body {
 	background: var(--bg-color-1);
 }
 
+#completed-container {
+	min-height: 0;
+}
 
 .header-project, .header-new {
 	margin: 0;
-	padding: 0.5em;
+	padding: 0.75em;
 	padding-left: 1.5em;
-	font-size: 19px;
+	font-size: 21px;
 	color: var(--font-color);
 	background: var(--header-color);
+}
+
+.letter-spaced {
+	letter-spacing: 0.1em;
 }
 
 .header-new, #current-timer, #current-task-text {
@@ -87,6 +104,10 @@ input[type="text"], input[type="date"] {
 	margin: 0 auto;
 }
 
+#major-minor-btn {
+	margin-top: 0.4em;
+}
+
 #add-minor, #add-major {
 	width: 100%;
 
@@ -95,6 +116,7 @@ input[type="text"], input[type="date"] {
 #add-schedule {
 	width: 60%;
 	margin: 0 auto;
+	margin-top: 0.4em;
 }
 
 #hr-sc {
