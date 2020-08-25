@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Project Manager</title>
+		<title>Butterfly Cage</title>
 		<link rel="stylesheet" type="text/css" href="styles/app.css">
 		<script defer type="text/javascript" src="scripts/app.js"></script>
 	</head>
@@ -44,9 +44,11 @@
 				<div id="static-task-form">
 					<h2 class="header-title header-new">Tasks</h2>
 					<form id="new-task-form">
-						<input id="new-task-text" type="text" class="text-field">
-						<button id="add-minor">Minor</button>
-						<button id="add-major">Major</button>
+						<input id="new-task-text" type="text" class="text-field" placeholder="- - -">
+						<div id="major-minor-btn">
+							<button id="add-minor">+ Minor</button>
+							<button id="add-major">+ Major</button>
+						</div>
 					</form>
 				</div>
 
@@ -55,14 +57,17 @@
 					<form id="new-schedule-form">
 						<input id="new-schedule-text" type="text" class="text-field">
 						<input type="date" id="schedule-date">
-						<input type="number" min="0" max="24" id="schedule-hour">
-						<input type="number" min="0" max="60" id="schedule-minute">
+						<div id="hr-sc">
+							<input type="number" min="0" max="24" id="schedule-hour">
+							<input type="number" min="0" max="60" id="schedule-minute">
+						</div>
 						<button id="add-schedule">Schedule</button>
 					</form>
 				</div>
 
 				<div id="current-task">
 					<h2 class="header-title header-new">Current Task</h2>
+					<p id="current-task-text">- - -</p>
 					<p id="current-timer">00:00</p>
 				</div>
 			</div>
@@ -71,6 +76,7 @@
 				<div id="tool-open-project" class="menu-icon"></div>
 				<div id="tool-create-project" class="menu-icon"></div>
 				<div id="tool-save-project" class="menu-icon"></div>
+				<div id="tool-settings" class="menu-icon"></div>
 				<div id="separator"> - </div>
 				<div id="tool-additional">
 					<div id="toolbox" style="display: none;">

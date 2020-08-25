@@ -1,0 +1,114 @@
+:root {
+	--header-color: red;
+	--bg-color-0: white;
+	--bg-color-1: maroon;
+	--font-color: white;
+}
+
+body {
+	background: var(--bg-color-0);
+}
+
+#container-main {
+	display: flex;
+	justify-content: space-around;
+}
+
+#container-one {
+	width: 65%;
+}
+
+#container-two {
+	width: 25%;
+}
+
+#container-three {
+	width: 3%;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+.menu-icon, #tool-additional {
+	width: 25px;
+	height: 25px;
+	background: black;
+}
+
+#new-schedule-form {
+	display: flex;
+	flex-direction: column;
+}
+
+#container-major, #container-minor, #container-schedule, #completed-container,
+#static-task-form, #schedule-task-form, #current-task  {
+	margin-top: 0.5em;
+	padding: 0;
+	min-height: 70px;
+	background: var(--bg-color-1);
+}
+
+
+.header-project, .header-new {
+	margin: 0;
+	padding: 0.5em;
+	padding-left: 1.5em;
+	font-size: 19px;
+	color: var(--font-color);
+	background: var(--header-color);
+}
+
+.header-new, #current-timer, #current-task-text {
+	text-align: center;
+	padding-left: 0;
+}
+
+.menu-icon {
+	margin-top: 0.5em;
+}
+
+input {
+	box-sizing: border-box;
+	text-align: center;
+}
+
+input[type="text"], input[type="date"] {
+	display: block;
+	margin: 0 auto;
+	width: 60%;
+}
+
+#major-minor-btn {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	margin: 0 auto;
+}
+
+#add-minor, #add-major {
+	width: 100%;
+
+}
+
+#add-schedule {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#hr-sc {
+	display: flex;
+	flex-direction: row;
+	width: 60%;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+input[type="number"] {
+	width: 50%;
+}
+
+#new-schedule-form, #new-task-form {
+	margin: 10px 0 15px 0;
+}
