@@ -1,8 +1,18 @@
 :root {
-	--header-color: red;
-	--bg-color-0: white;
-	--bg-color-1: maroon;
-	--font-color: white;
+	/* General */
+	--input-bg: #f2f2f2;
+
+	/* Dark Theme */
+	--header-color: rgb(50,69,77);
+	--bg-color-0: rgb(21,28,32);
+	--bg-color-1: rgb(32,41,47);
+	--font-color: rgb(255,253,255);
+
+	/* Light Theme */
+	/*--header-color: rgb(25, 255, 194);
+	--bg-color-0: rgba(116, 252, 216, 0.3);
+	--bg-color-1: rgb(168, 255, 232);
+	--font-color: rgb(34, 36, 35);*/
 }
 
 @font-face {
@@ -13,6 +23,7 @@
 
 body {
 	background: var(--bg-color-0);
+	color: var(--font-color);
 }
 
 * {
@@ -44,13 +55,15 @@ body {
 .menu-icon, #tool-additional {
 	width: 25px;
 	height: 25px;
-	background: black;
+	background: var(--header-color);
 }
 
 #new-schedule-form {
 	display: flex;
 	flex-direction: column;
 }
+
+/* Generic and column 1 styling */
 
 #container-major, #container-minor, #container-schedule, #completed-container,
 #static-task-form, #schedule-task-form, #current-task  {
@@ -68,7 +81,7 @@ body {
 	margin: 0;
 	padding: 0.75em;
 	padding-left: 1.5em;
-	font-size: 21px;
+	font-size: 19px;
 	color: var(--font-color);
 	background: var(--header-color);
 }
@@ -86,15 +99,33 @@ body {
 	margin-top: 0.5em;
 }
 
+#header-major {
+	font-size: 22px;
+}
+
+/* Column 2 styling */
+
 input {
 	box-sizing: border-box;
 	text-align: center;
+	outline: none;
+	background: var(--input-bg);
+	border: 0;
 }
 
 input[type="text"], input[type="date"] {
 	display: block;
 	margin: 0 auto;
 	width: 60%;
+}
+
+input[type="number"] {
+	width: 49%;
+	margin-top: 0.2em;
+}
+
+input[type="date"]  {
+	margin-top: 0.2em;
 }
 
 #major-minor-btn {
@@ -122,15 +153,13 @@ input[type="text"], input[type="date"] {
 #hr-sc {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	width: 60%;
 	box-sizing: border-box;
 	margin: 0 auto;
 }
 
-input[type="number"] {
-	width: 50%;
-}
-
 #new-schedule-form, #new-task-form {
 	margin: 10px 0 15px 0;
 }
+
