@@ -1,6 +1,5 @@
-const fs = require('fs');
-const { dialog } = require('electron').remote;
-console.log(dialog);
+// const fs = require('fs');
+// const { dialog } = require('electron').remote;
 
 // const test = document.getElementById('tool-save-project');
 // test.addEventListener('click', () => {

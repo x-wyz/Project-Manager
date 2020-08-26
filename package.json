@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/x-wyz/Project-Manager#readme",
   "dependencies": {
+    "owlbot-js": "^2.0.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

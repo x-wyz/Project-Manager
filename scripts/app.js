@@ -1,5 +1,7 @@
 let path = require('path');
 let {getElement, compileElement, createElement} = require(path.join(__dirname, 'scripts/element-functions'));
+let {openWindow} = require(path.join(__dirname, 'scripts/electron-window'));
+
 
 const { v4: generateId } = require('uuid');
 
@@ -28,11 +30,19 @@ const APP = {
 	currentTaskText: getElement('current-task-text'),
 	currentTaskTimer: getElement('current-timer'),
 	// Additional Tools / FS
-	// ****
+	TOOLS: {
+		dictionary: getElement('dictionary'),
+		calculator: getElement('calculator'),
+		whiteboard: getElement('whiteboard'),
+		notebooks: getElement('notebooks'),
+		pomodoro: getElement('pomodoro')
+	},
+	// Timer
 	currentTimer: null,
 	clearTimer: function(){
 		clearInterval(this.currentTimer);
-	}
+	},
+
 }
 
 // Data will be used to save into a file for future loading
@@ -245,3 +255,5 @@ function formatTime(timerObj) {
 APP.addMinorBtn.addEventListener('click', () => addMinorTask());
 APP.addMajorBtn.addEventListener('click', () => addMajorTask());
 APP.addSchedule.addEventListener('click', () => addScheduleTask());
+
+APP.TOOLS.dictionary.addEventListener('click', () => openWindow(path.join(__dirname,'/tools/dictionary.tool.html'), 300, 450));

@@ -1,0 +1,69 @@
+:root {
+  --color-bg: rgb(21,28,32);
+  --color-header: rgb(50,69,77);
+  --color-container-bg: rgb(32,41,47);
+  --color-text: white;
+
+  --high-btn: rgb(240, 81, 81);
+  --high-btn-hover: rgb(191, 63, 63);
+
+  --mid-btn: rgb(237, 132, 66);
+  --mid-btn-hover: rgb(204, 114, 57);
+
+  --low-btn: rgb(67, 186, 69);
+  --low-btn-hover: rgb(51, 145, 52);
+
+  --border-style-1: 2px solid var(--color-header);
+}
+
+body {
+  background: var(--bg-color-0);
+  color: white;
+}
+
+#dictionary-container {
+  background: var(--bg-color-1);
+  min-height: 90vh;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#word-lookup { 
+  margin: 0.9em auto;
+  width: 80%;
+  padding: 0.4em;
+}
+
+#lookup-btn {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 0.5em;
+  font-size: 14px;
+  background: var(--input-important);
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  box-sizing: border-box;
+  transition: background 0.25s, color 0.25s;
+}
+
+#lookup-btn:hover {
+  background: var(--input-important-hover);
+  color: var(--color-text-clear);
+}
+
+/* */
+
+.type {
+  font-size: 10px;
+  font-style: italic;
+  margin-left: 0.5em;
+}
+
+.definition {
+  font-size: 14px;
+  margin: 0.4em;
+  padding: 0.4em;
+  text-align: left;
+  border-left: 0.1px dashed var(--header-color);
+  

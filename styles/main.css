@@ -1,0 +1,55 @@
+:root {
+
+  --header-color: rgb(50,69,77);
+  --bg-color-0: rgb(21,28,32);
+  --bg-color-1: rgb(32,41,47);
+  --font-color: rgb(255,253,255);
+
+  /* Light Theme */
+  /*--header-color: rgb(25, 255, 194);
+  --bg-color-0: rgba(116, 252, 216, 0.3);
+  --bg-color-1: rgb(168, 255, 232);
+  --font-color: rgb(34, 36, 35);*/
+
+  --border-style-1: 2px solid var(--color-header);
+
+  --input-bg: #f2f2f2;
+
+  --input-important: orange;
+  --input-important-hover: rgb(217, 140, 0);
+
+  --color-text-fade: rgba(255, 255, 255, 0.35);
+  --color-text-clear: rgba(255, 255, 255, 1);
+}
+
+@font-face {
+    font-family: 'rowdies';
+    src: url('fonts/rowdies-light-webfont.woff2') format('woff2'),
+         url('fonts/rowdies-light-webfont.woff') format('woff');
+}
+
+* {
+  font-family: rowdies;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+input[type="text"]{
+  border: 0;
+  outline: none;
+  text-align: center;
+  background: var(--input-bg, white);
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  opacity: 0.6;
+}
