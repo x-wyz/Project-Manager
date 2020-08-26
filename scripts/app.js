@@ -1,19 +1,5 @@
-const getElement = (id) => document.getElementById(id);
-
-function createElement(txt, classes, type='p'){
-	const element = document.createElement(type);
-	element.innerHTML = txt;
-	for (let i = 0; i < classes.length; i++) {
-		element.classList.add(classes[i]);
-	}
-	return element;
-}
-
-function compileElement(ele, elements){
-	for (let i = 0; i < elements.length; i++) {
-		ele.appendChild(elements[i]);
-	}
-}
+let path = require('path');
+let {getElement, compileElement, createElement} = require(path.join(__dirname, 'scripts/element-functions'));
 
 const { v4: generateId } = require('uuid');
 
@@ -49,9 +35,11 @@ const APP = {
 	}
 }
 
+// Data will be used to save into a file for future loading
 const majorTasks = {};
 const minorTasks = {};
 const completedTasks = {};
+const scheduleTasks = [/* Will be sorted everytime new task is added */];
 
 function addMajorTask() {
 	if (!APP.newTaskText.value) return;
@@ -168,6 +156,10 @@ function addMinorTask() {
 	APP.newTaskText.value = "";
 }
 
+function addScheduleTask(){
+	// tomorrow :D
+}
+
 function notesHandler(id) {
 	majorTasks[id].hidden = !majorTasks[id].hidden;
 	if (majorTasks[id].hidden) {
@@ -214,7 +206,7 @@ function completeHandler(id, container) {
 
 	const completedText = createElement(completedTaskText, ['completed-text']);
 	const completedTime = createElement(completedTaskTime, ['completed-time']);
-	const removeCompleted = createElement('RM', ['remove']);
+	const removeCompleted = createElement('RM', ['remove'], 'button');
 
 	compileElement(newCompleted, [completedText, completedTime, removeCompleted]);
 
@@ -252,3 +244,4 @@ function formatTime(timerObj) {
 
 APP.addMinorBtn.addEventListener('click', () => addMinorTask());
 APP.addMajorBtn.addEventListener('click', () => addMajorTask());
+APP.addSchedule.addEventListener('click', () => addScheduleTask());

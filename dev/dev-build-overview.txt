@@ -22,9 +22,6 @@ Main
 				- User should only be able to update the task if time has passed
 			- User can update the task and have it be set furthur or closer
 			- User can remove a task from the schedule
-		- General
-			- When user completes a task in minor or schedule they are given an option to add a note before
-			  it gets sent to the completed container
 
 	- C2
 		- Gives the user control over C1 by allowing them to add task to major and minor branch as well 
