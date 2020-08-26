@@ -11,7 +11,7 @@
   --bg-color-1: rgb(168, 255, 232);
   --font-color: rgb(34, 36, 35);*/
 
-  --border-style-1: 2px solid var(--color-header);
+  --border-style-1: 2px solid var(--header-color);
 
   --input-bg: #f2f2f2;
 

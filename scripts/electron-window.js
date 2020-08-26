@@ -9,7 +9,7 @@ function openWindow(src, height=700, width=550) {
         }
     });
     win.loadURL(src);
-    win.removeMenu();
+    // win.removeMenu();
 }
 
 module.exports = { openWindow }

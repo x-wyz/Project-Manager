@@ -257,3 +257,4 @@ APP.addMajorBtn.addEventListener('click', () => addMajorTask());
 APP.addSchedule.addEventListener('click', () => addScheduleTask());
 
 APP.TOOLS.dictionary.addEventListener('click', () => openWindow(path.join(__dirname,'/tools/dictionary.tool.html'), 300, 450));
+APP.TOOLS.calculator.addEventListener('click', () => openWindow(path.join(__dirname,'/tools/calculator.tool.html'), 400, 300));
