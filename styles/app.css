@@ -63,6 +63,15 @@ body {
 	flex-direction: column;
 }
 
+button {
+	border: 0;
+	background: none;
+	background: var(--font-color);
+	box-shadow: none;
+	border-radius: 0px;
+	outline: none;
+}
+
 /* Generic and column 1 styling */
 
 #container-major, #container-minor, #container-schedule, #completed-container,
