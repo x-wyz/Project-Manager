@@ -1,0 +1,14 @@
+Calculator-
+	- User can perform basic arithmetic (+/- etc..)
+	- Calculations should follow PEMDAS/BEDMAS
+
+	- User can view a history of previous calculated values
+
+	- User has access to common scientific functions such as sin. cos. tan
+
+	- User can graph simple functions
+
+	- User has access to common conversions
+		- Temperature
+		- Length
+		- Mass

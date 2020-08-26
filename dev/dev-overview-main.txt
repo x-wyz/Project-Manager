@@ -1,0 +1,30 @@
+Functionality checklist.
+
+Completed(for V0.1.0)
+-
+- Major task branch
+- Minor task branch
+- Major task button
+- Minor task button
+- Completed section
+- Current section
+- Dictionary (/partial planned)
+- Calculator (/partial planned)
+
+Next
+-
+- Night/Day switch
+- Pomodoro
+- Music player
+
+Incomplete
+-
+- Schedule task branch
+- Schedule task button
+- Open project
+- Create project
+- Save project
+
+Distant
+-
+- Notebook

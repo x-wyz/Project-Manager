@@ -1,0 +1,5 @@
+Pomodoro
+	- When count reaches 0 user should be alerted their time is up
+	- Time can be resetted
+	- User can add or decrease time
+	- The pomodoro can be paused or reset at anypoint

@@ -1,0 +1,12 @@
+Dictionary-
+	- A basic dictionary, user should be able to lookup the definition of common words even
+	  if they're not connected to the internet.
+
+	- If they're connected to the internet user can lookup words using the first result from
+	  google.
+
+	- Possible thesaurus.
+
+	- DICTIONARY API: Owlbot-js OR Google(screenscrape)
+	- THESAURUS API: Thesaurus
+	

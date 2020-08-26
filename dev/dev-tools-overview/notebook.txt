@@ -1,0 +1,13 @@
+Notebook
+	- User can create notebooks that can be viewed directly using this app.
+	- User can export notebooks into atleast one other common format (pdf, txt, img, etc).
+
+	- Notebooks can contain inf amount of pages, user should be able to view all notebooks
+	  within the same project folder. 
+	  	- The title of the notebook should be customizable
+
+	- User can perform commands within the notebook
+		- creating graphs
+		- simple calculations
+
+Probably released past 1.0.0
