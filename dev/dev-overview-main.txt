@@ -14,18 +14,19 @@ Completed(for V0.1.0)
 
 Next
 -
-- Night/Day switch
-- Music player
+- Create project
+- Open project
+- Save project
 
 Incomplete
 -
 - Schedule task branch
 - Schedule task button
-- Open project
-- Create project
-- Save project
 - Notes Area
+- Music player
 
 Distant
 -
 - Notebook
+- Night/Day switch (Unable to transmit data multiple windows deep leading to inconsistency therefore
+  I've decided to not include this feature until I find away to transmit data between windows)

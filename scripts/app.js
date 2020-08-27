@@ -41,8 +41,7 @@ const APP = {
 	currentTimer: null,
 	clearTimer: function(){
 		clearInterval(this.currentTimer);
-	},
-
+	}
 }
 
 // Data will be used to save into a file for future loading
