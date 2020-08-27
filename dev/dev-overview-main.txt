@@ -10,11 +10,11 @@ Completed(for V0.1.0)
 - Current section
 - Dictionary (/partial planned)
 - Calculator (/partial planned)
+- Pomodoro (/ partial planned & functionality only)
 
 Next
 -
 - Night/Day switch
-- Pomodoro
 - Music player
 
 Incomplete
@@ -24,6 +24,7 @@ Incomplete
 - Open project
 - Create project
 - Save project
+- Notes Area
 
 Distant
 -
