@@ -11,6 +11,11 @@ const APP = {
 	minorHeader: getElement('header-minor'),
 	scheduleHeader: getElement('header-schedule'),
 	completedHeader: getElement('header-completed'),
+	// C1 lighters
+	majorLighter: getElement('major-lighter'),
+	minorLighter: getElement('minor-lighter'),
+	scheduleLighter: getElement('schedule-lighter'),
+	completedLighter: getElement('completed-lighter'),
 	// C1 containers
 	majorContainer: getElement('generated-major'),
 	minorContainer: getElement('generated-minor'),
@@ -251,6 +256,18 @@ function formatTime(timerObj) {
 	return `${timerObj.minutes > 9 ? timerObj.minutes : '0'+timerObj.minutes}:${timerObj.seconds > 9 ? timerObj.seconds : '0'+timerObj.seconds}`
 }
 
+function hideBody(head, body, lighter){
+	head.addEventListener('click', () => {
+		body.style.display = `${body.style.display == 'none' ? 'block' : 'none'}`;
+		if (lighter.classList.contains('closed-lighter')){
+			lighter.classList.remove('closed-lighter');
+		}
+		else {
+			lighter.classList.add('closed-lighter');
+		}
+	})
+}
+
 APP.addMinorBtn.addEventListener('click', () => addMinorTask());
 APP.addMajorBtn.addEventListener('click', () => addMajorTask());
 APP.addSchedule.addEventListener('click', () => addScheduleTask());
@@ -259,3 +276,7 @@ APP.TOOLS.dictionary.addEventListener('click', () => openWindow(path.join(__dirn
 APP.TOOLS.calculator.addEventListener('click', () => openWindow(path.join(__dirname,'/tools/calculator.tool.html'), 400, 300));
 APP.TOOLS.pomodoro.addEventListener('click', () => openWindow(path.join(__dirname,'/tools/pomodoro.tool.html'), 300, 400));
 
+hideBody(APP.majorHeader, APP.majorContainer, APP.majorLighter);
+hideBody(APP.minorHeader, APP.minorContainer, APP.minorLighter);
+hideBody(APP.scheduleHeader, APP.scheduleContainer, APP.scheduleLighter);
+hideBody(APP.completedHeader, APP.completedContainer, APP.completedLighter);

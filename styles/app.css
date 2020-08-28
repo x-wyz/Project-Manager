@@ -51,6 +51,24 @@ button {
 	outline: none;
 }
 
+/* Header lighters - on/off */
+
+.lighter {
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	background: rgba(61, 223, 155, 0.7);
+	position: relative;
+	right: 15px;
+	bottom: 2px;
+	border-radius: 5px;
+}
+
+.closed-lighter {
+	background: rgba(255, 99, 99, 0.8);
+}
+
+
 /* Generic and column 1 styling */
 
 #container-major, #container-minor, #container-schedule, #completed-container,

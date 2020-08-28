@@ -10,18 +10,18 @@ Completed(for V0.1.0)
 - Current section
 - Dictionary (/partial planned)
 - Calculator (/partial planned)
-- Pomodoro (/ partial planned & functionality only)
+- Pomodoro (/ partial planned)
 
 Next
+-
+- Schedule task branch
+- Schedule task button
+
+Incomplete
 -
 - Create project
 - Open project
 - Save project
-
-Incomplete
--
-- Schedule task branch
-- Schedule task button
 - Notes Area
 - Music player
 
