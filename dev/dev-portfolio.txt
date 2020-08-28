@@ -1,0 +1,23 @@
+Portfolio ideas
+--
+
+MAIN
+--
+Project Manager - This will be my main project that will most likely be forever ongoing
+				  as I plan to add new features every now and then
+
+IDEAS
+- Redesign an exsisting site or mimic
+- Portfolio site
+- Store
+- Wordpress site
+
+Mini
+- Formvalidation
+
+Project Elements
+-
+- Design Pattern
+- Single Page Application
+- Progressive Web Application
+- 

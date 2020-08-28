@@ -1,0 +1,42 @@
+body {
+  background: var(--bg-color-0);
+  color: white;
+}
+
+#controls-container, #time-controls {
+	display: flex;
+	text-align: center;
+	width: 95%;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+.button {
+	border: var(--border-style-1);
+	width: 100%;
+	padding: 0.8em;
+	margin: 0.14em;
+	margin-top: 0.28em;
+	transition: background 0.25s;
+	background: var(--bg-color-1);
+	box-sizing: border-box;
+}
+
+.button:hover {
+	background: var(--header-color);
+}
+
+#play {
+	width: 200%;
+}
+
+#timer {
+	font-size: 40px;
+	text-align: center;
+	border: var(--border-style-1);
+	padding: 20px 0;
+	margin: 0 auto;
+	margin-top: 0.7em;
+	width: 95%;
+	box-sizing: border-box;
+}

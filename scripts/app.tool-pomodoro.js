@@ -41,6 +41,7 @@ const POMODORO = {
 		this.updateDisplay();
 	},
 	startTimer: function() {
+		this.clear();
 		function countdown(){
 			this.seconds--;
 			if (this.seconds < 0) {

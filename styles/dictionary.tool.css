@@ -1,21 +1,3 @@
-:root {
-  --color-bg: rgb(21,28,32);
-  --color-header: rgb(50,69,77);
-  --color-container-bg: rgb(32,41,47);
-  --color-text: white;
-
-  --high-btn: rgb(240, 81, 81);
-  --high-btn-hover: rgb(191, 63, 63);
-
-  --mid-btn: rgb(237, 132, 66);
-  --mid-btn-hover: rgb(204, 114, 57);
-
-  --low-btn: rgb(67, 186, 69);
-  --low-btn-hover: rgb(51, 145, 52);
-
-  --border-style-1: 2px solid var(--color-header);
-}
-
 body {
   background: var(--bg-color-0);
   color: white;
@@ -51,8 +33,6 @@ body {
   background: var(--input-important-hover);
   color: var(--color-text-clear);
 }
-
-/* */
 
 .type {
   font-size: 10px;
