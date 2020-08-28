@@ -53,7 +53,7 @@ const APP = {
 const majorTasks = {};
 const minorTasks = {};
 const completedTasks = {};
-const scheduleTasks = [/* Will be sorted everytime new task is added */];
+let scheduleTasks = [/* Will be sorted everytime new task is added */];
 
 function addMajorTask() {
 	if (!APP.newTaskText.value) return;
@@ -141,7 +141,7 @@ function addMinorTask() {
 	const taskText = createElement(APP.newTaskText.value, ['task-text']);
 	const taskCurrent = createElement('CU', ['task-current', 'task-btn'], 'button');
 	const taskComplete = createElement('CP', ['task-complete', 'task-btn'], 'button');
-	const taskRemove = createElement('RM', ['task-complete', 'task-btn'], 'button');
+	const taskRemove = createElement('RM', ['task-remove', 'task-btn'], 'button');
 
 	compileElement(task, [taskText, taskCurrent, taskComplete, taskRemove]);
 
@@ -171,7 +171,47 @@ function addMinorTask() {
 }
 
 function addScheduleTask(){
-	// tomorrow :D
+	const { newScheduleText:task, newScheduleDate:date, newScheduleHour:hour, newScheduleMinute:minute} = APP;
+	let time = new Date(date.value);
+	let offset = 3600000 * ((time.getTimezoneOffset() / 60) + parseInt(hour.value)) + 60000 * parseInt(minute.value);
+	time = new Date(time.getTime() + offset);
+
+	const uuid = generateId();
+
+	scheduleTasks.push({
+		date: time,
+		task: task.value,
+		id: uuid
+	})
+
+	organizeSchedule();
+}
+
+function organizeSchedule() {
+	const { scheduleContainer } = APP;
+
+	scheduleContainer.innerHTML = '';
+	scheduleTasks.sort((a, b) => a.date - b.date);
+
+	for (let i = 0; i < scheduleTasks.length; i++) {
+		const scheduleTask = document.createElement('div');
+		const taskText = createElement(scheduleTasks[i].task, ['scheduled-task']);
+		const taskTime = createElement(`${scheduleTasks[i].date.toDateString()}`, ['date-time']);
+		const remove = createElement('RM', ['task-remove'], 'button');
+
+		compileElement(scheduleTask, [taskTime, taskText, remove]);
+
+		console.log(scheduleTasks[i].id);
+		remove.addEventListener('click', () => removeScheduledTask(scheduleTasks[i].id));
+		APP.scheduleContainer.appendChild(scheduleTask);
+	}
+
+	return;
+}
+
+function removeScheduledTask(uuid) {
+	scheduleTasks = scheduleTasks.filter(n => n.id != uuid);
+	organizeSchedule();
 }
 
 function notesHandler(id) {
