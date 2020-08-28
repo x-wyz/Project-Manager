@@ -46,6 +46,11 @@ const APP = {
 	currentTimer: null,
 	clearTimer: function(){
 		clearInterval(this.currentTimer);
+	},
+	setCurrentDate: function(){
+		const today = new Date();
+		const month = today.getMonth() + 1 > 9 ? today.getMonth() + 1 : '0' + (today.getMonth() + 1)
+		this.newScheduleDate.value = `${today.getFullYear()}-${month}-${today.getDate()}`;
 	}
 }
 
@@ -172,6 +177,19 @@ function addMinorTask() {
 
 function addScheduleTask(){
 	const { newScheduleText:task, newScheduleDate:date, newScheduleHour:hour, newScheduleMinute:minute} = APP;
+
+	if (!task.value || !date.value) {
+		return;
+	}
+
+	if (!hour.value) {
+		hour.value = 0;
+	}
+
+	if (!minute.value) {
+		minute.value = 0;
+	}
+
 	let time = new Date(date.value);
 	let offset = 3600000 * ((time.getTimezoneOffset() / 60) + parseInt(hour.value)) + 60000 * parseInt(minute.value);
 	time = new Date(time.getTime() + offset);
@@ -183,6 +201,8 @@ function addScheduleTask(){
 		task: task.value,
 		id: uuid
 	})
+
+	task.value = '';
 
 	organizeSchedule();
 }
@@ -320,3 +340,6 @@ hideBody(APP.majorHeader, APP.majorContainer, APP.majorLighter);
 hideBody(APP.minorHeader, APP.minorContainer, APP.minorLighter);
 hideBody(APP.scheduleHeader, APP.scheduleContainer, APP.scheduleLighter);
 hideBody(APP.completedHeader, APP.completedContainer, APP.completedLighter);
+
+// Sets value of calandar to today on app launch
+APP.setCurrentDate();
