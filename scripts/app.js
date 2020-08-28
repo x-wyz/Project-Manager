@@ -139,15 +139,18 @@ function addMinorTask() {
 	if (!text.value) return;
 
 	const task = document.createElement('div');
+	const btnContainer = document.createElement('div');
 
 	const taskText = createElement(text.value, ['task-text']);
 	const taskCurrent = createElement('CU', ['task-current', 'task-btn'], 'button');
 	const taskComplete = createElement('CP', ['task-complete', 'task-btn'], 'button');
 	const taskRemove = createElement('RM', ['task-remove', 'task-btn'], 'button');
 
-	compileElement(task, [taskText, taskCurrent, taskComplete, taskRemove]);
+	compileElement(btnContainer, [ taskCurrent, taskComplete, taskRemove ]);
+	compileElement(task, [taskText, btnContainer]);
 
 	task.classList.add('generated-task');
+	btnContainer.classList.add('btn-container');
 
 	const uuid = generateId();
 
@@ -310,7 +313,7 @@ function formatTime(timerObj) {
 
 function hideBody(head, body, lighter){
 	head.addEventListener('click', () => {
-		body.style.display = `${body.style.display == 'none' ? 'block' : 'none'}`;
+		body.style.display = `${body.style.display == 'none' ? 'flex' : 'none'}`;
 		if (lighter.classList.contains('closed-lighter')){
 			lighter.classList.remove('closed-lighter');
 		}
