@@ -8,14 +8,15 @@ Completed(for V0.1.0)
 - Minor task button
 - Completed section
 - Current section
+- Schedule task branch
+- Schedule task button
 - Dictionary (/partial planned)
 - Calculator (/partial planned)
 - Pomodoro (/ partial planned)
 
 Next
 -
-- Schedule task branch
-- Schedule task button
+- Music player
 
 Incomplete
 -
@@ -23,7 +24,6 @@ Incomplete
 - Open project
 - Save project
 - Notes Area
-- Music player
 
 Distant
 -

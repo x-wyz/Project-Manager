@@ -1,8 +1,6 @@
-let path = require('path');
-let {getElement, compileElement, createElement} = require(path.join(__dirname, 'scripts/element-functions'));
-let {openWindow} = require(path.join(__dirname, 'scripts/electron-window'));
-
-
+const path = require('path');
+const { getElement, compileElement, createElement } = require(path.join(__dirname, 'scripts/element-functions'));
+const { openWindow } = require(path.join(__dirname, 'scripts/electron-window'));
 const { v4: generateId } = require('uuid');
 
 const APP = {
@@ -38,7 +36,6 @@ const APP = {
 	TOOLS: {
 		dictionary: getElement('dictionary'),
 		calculator: getElement('calculator'),
-		whiteboard: getElement('whiteboard'),
 		notebooks: getElement('notebooks'),
 		pomodoro: getElement('pomodoro')
 	},
@@ -51,19 +48,18 @@ const APP = {
 		const today = new Date();
 		const month = today.getMonth() + 1 > 9 ? today.getMonth() + 1 : '0' + (today.getMonth() + 1)
 		this.newScheduleDate.value = `${today.getFullYear()}-${month}-${today.getDate()}`;
-	}
+	},
+	majorTasks: {},
+	minorTasks: {},
+	completedTasks: {},
+	scheduleTasks: []
 }
 
-// Data will be used to save into a file for future loading
-const majorTasks = {};
-const minorTasks = {};
-const completedTasks = {};
-let scheduleTasks = [/* Will be sorted everytime new task is added */];
-
 function addMajorTask() {
-	if (!APP.newTaskText.value) return;
+	const { newTaskText:text, majorTasks:tasks, majorContainer:container } = APP;
+	if (!text.value) return;
 
-	 function addNotesHandler(field, container) {
+	function addNotesHandler(field, container) {
 	 	const newNote = document.createElement('div');
 
 	 	const noteText = createElement(field.value, ['notes-text']);
@@ -75,23 +71,23 @@ function addMajorTask() {
 
 	 	container.appendChild(newNote);
 
-	 	majorTasks[uuid].notes[uuid2] = {
+	 	tasks[uuid].notes[uuid2] = {
 	 		element: newNote,
 	 		id: uuid2,
 	 		text: noteText.innerHTML
 	 	}
 
-	 	removeNote.addEventListener('click', () => removeHandler(uuid2, majorTasks[uuid].notes));
+	 	removeNote.addEventListener('click', () => removeHandler(uuid2, tasks[uuid].notes));
 
 	 	field.value = "";
-	 }
+	}
 
 	const task = document.createElement('div');
 	const general = document.createElement('div');
 	const notes = document.createElement('div');
 	const newNotes = document.createElement('div');
 
-	const taskText = createElement(APP.newTaskText.value, ['task-text']);
+	const taskText = createElement(text.value, ['task-text']);
 	const addNotes = createElement('+Note', ['task-note', 'task-btn'], 'button');
 	const taskLock = createElement('LK', ['task-complete', 'task-btn'], 'button');
 	const taskRemove = createElement('RM', ['task-complete', 'task-btn'], 'button');
@@ -115,9 +111,9 @@ function addMajorTask() {
 
 	task.classList.add('generated-task');
 
-	APP.majorContainer.appendChild(task);
+	container.appendChild(task);
 
-	majorTasks[uuid] = {
+	tasks[uuid] = {
 		element: task,
 		id: uuid,
 		text: taskText.innerHTML,
@@ -128,9 +124,9 @@ function addMajorTask() {
 		hidden: true
 	}
 
-	APP.newTaskText.value = "";
+	text.value = "";
 
-	taskRemove.addEventListener('click', () => removeHandler(uuid, majorTasks));
+	taskRemove.addEventListener('click', () => removeHandler(uuid, tasks));
 	taskLock.addEventListener('click', () => lockHandler(uuid));
 	addNotes.addEventListener('click', () => notesHandler(uuid));
 
@@ -139,11 +135,12 @@ function addMajorTask() {
 }
 
 function addMinorTask() {
-	if (!APP.newTaskText.value) return;
+	const { newTaskText:text, minorContainer:container, minorTasks: tasks } = APP;
+	if (!text.value) return;
 
 	const task = document.createElement('div');
 
-	const taskText = createElement(APP.newTaskText.value, ['task-text']);
+	const taskText = createElement(text.value, ['task-text']);
 	const taskCurrent = createElement('CU', ['task-current', 'task-btn'], 'button');
 	const taskComplete = createElement('CP', ['task-complete', 'task-btn'], 'button');
 	const taskRemove = createElement('RM', ['task-remove', 'task-btn'], 'button');
@@ -156,9 +153,9 @@ function addMinorTask() {
 
 	task.id = uuid;
 
-	APP.minorContainer.appendChild(task);
+	container.appendChild(task);
 
-	minorTasks[uuid] = {
+	tasks[uuid] = {
 		element: task,
 		id: uuid,
 		text: taskText.innerHTML,
@@ -169,26 +166,20 @@ function addMinorTask() {
 	}
 
 	taskCurrent.addEventListener('click', () => currentHandler(uuid));
-	taskRemove.addEventListener('click', () => removeHandler(uuid, minorTasks));
-	taskComplete.addEventListener('click', () => completeHandler(uuid, minorTasks));
+	taskRemove.addEventListener('click', () => removeHandler(uuid, tasks));
+	taskComplete.addEventListener('click', () => completeHandler(uuid, tasks));
 
-	APP.newTaskText.value = "";
+	text.value = "";
 }
 
 function addScheduleTask(){
 	const { newScheduleText:task, newScheduleDate:date, newScheduleHour:hour, newScheduleMinute:minute} = APP;
 
-	if (!task.value || !date.value) {
-		return;
-	}
+	if (!task.value || !date.value) return;
 
-	if (!hour.value) {
-		hour.value = 0;
-	}
+	if (!hour.value) hour.value = 0;
 
-	if (!minute.value) {
-		minute.value = 0;
-	}
+	if (!minute.value) minute.value = 0;
 
 	let time = new Date(date.value);
 	let offset = 3600000 * ((time.getTimezoneOffset() / 60) + parseInt(hour.value)) + 60000 * parseInt(minute.value);
@@ -196,7 +187,7 @@ function addScheduleTask(){
 
 	const uuid = generateId();
 
-	scheduleTasks.push({
+	APP.scheduleTasks.push({
 		date: time,
 		task: task.value,
 		id: uuid
@@ -208,63 +199,64 @@ function addScheduleTask(){
 }
 
 function organizeSchedule() {
-	const { scheduleContainer } = APP;
+	const { scheduleContainer:container, scheduleTasks:tasks } = APP;
 
-	scheduleContainer.innerHTML = '';
-	scheduleTasks.sort((a, b) => a.date - b.date);
+	container.innerHTML = '';
+	tasks.sort((a, b) => a.date - b.date);
 
-	for (let i = 0; i < scheduleTasks.length; i++) {
+	tasks.forEach(task => {
 		const scheduleTask = document.createElement('div');
-		const taskText = createElement(scheduleTasks[i].task, ['scheduled-task']);
-		const taskTime = createElement(`${scheduleTasks[i].date.toDateString()}`, ['date-time']);
+		const taskText = createElement(task.task, ['scheduled-task']);
+		const taskTime = createElement(`${task.date.toDateString()}`, ['date-time']);
 		const remove = createElement('RM', ['task-remove'], 'button');
 
 		compileElement(scheduleTask, [taskTime, taskText, remove]);
 
-		console.log(scheduleTasks[i].id);
-		remove.addEventListener('click', () => removeScheduledTask(scheduleTasks[i].id));
-		APP.scheduleContainer.appendChild(scheduleTask);
-	}
+		remove.addEventListener('click', () => removeScheduledTask(tasks.id));
+		container.appendChild(scheduleTask);
+	})
 
 	return;
 }
 
 function removeScheduledTask(uuid) {
-	scheduleTasks = scheduleTasks.filter(n => n.id != uuid);
+	APP.scheduleTasks = APP.scheduleTasks.filter(n => n.id != uuid);
 	organizeSchedule();
 }
 
 function notesHandler(id) {
-	majorTasks[id].hidden = !majorTasks[id].hidden;
-	if (majorTasks[id].hidden) {
-		majorTasks[id].newNotesField.classList.add('hidden');
+	APP.majorTasks[id].hidden = !APP.majorTasks[id].hidden;
+	if (APP.majorTasks[id].hidden) {
+		APP.majorTasks[id].newNotesField.classList.add('hidden');
 	}
 	else {
-		majorTasks[id].newNotesField.classList.remove('hidden');
+		APP.majorTasks[id].newNotesField.classList.remove('hidden');
 	}
 }
 
 function lockHandler(id) {
-	majorTasks[id].locked = !majorTasks[id].locked;
-	for (let i = 0; i < majorTasks[id].buttons.length; i++) {
-		if(majorTasks[id].locked) {
-			majorTasks[id].buttons[i].setAttribute("disabled", "true");
-		} else {
-			majorTasks[id].buttons[i].removeAttribute("disabled");
-		}
-	}
+	const { majorTasks:tasks } = APP;
+	tasks[id].locked = !tasks[id].locked;
 
-	if (majorTasks[id].locked) {
-		majorTasks[id].element.classList.add('isLocked');
+	tasks[id].buttons.forEach(button => {
+		if(tasks[id].locked) {
+			button.setAttribute("disabled", "true");
+		} else {
+			button.removeAttribute("disabled");
+		}
+	})
+
+	if (tasks[id].locked) {
+		tasks[id].element.classList.add('isLocked');
 	} else {
-		majorTasks[id].element.classList.remove('isLocked');
+		tasks[id].element.classList.remove('isLocked');
 	}
 }
 
 function currentHandler(id) {
 	APP.clearTimer();
-	APP.currentTaskText.innerHTML = minorTasks[id].text;
-	APP.currentTimer = timer(minorTasks[id].timer);
+	APP.currentTaskText.innerHTML = APP.minorTasks[id].text;
+	APP.currentTimer = timer(APP.minorTasks[id].timer);
 }
 
 function removeHandler(id, container) {
@@ -275,8 +267,8 @@ function removeHandler(id, container) {
 function completeHandler(id, container) {
 	const newCompleted = document.createElement('div');
 
-	const completedTaskText = minorTasks[id].text;
-	const completedTaskTime = formatTime(minorTasks[id].timer);
+	const completedTaskText = APP.minorTasks[id].text;
+	const completedTaskTime = formatTime(APP.minorTasks[id].timer);
 
 	const completedText = createElement(completedTaskText, ['completed-text']);
 	const completedTime = createElement(completedTaskTime, ['completed-time']);
@@ -284,20 +276,20 @@ function completeHandler(id, container) {
 
 	compileElement(newCompleted, [completedText, completedTime, removeCompleted]);
 
-	completedTasks[id] = {
+	APP.completedTasks[id] = {
 		element: newCompleted,
 		id: id,
 		text: completedTaskText,
 		timer: {
-			minutes: minorTasks[id].timer.minutes,
-			seconds: minorTasks[id].timer.seconds
+			minutes: APP.minorTasks[id].timer.minutes,
+			seconds: APP.minorTasks[id].timer.seconds
 		}
 	}
 
 	APP.completedContainer.appendChild(newCompleted);
 	removeHandler(id, container);
 
-	removeCompleted.addEventListener('click', () => removeHandler(id, completedTasks));
+	removeCompleted.addEventListener('click', () => removeHandler(id, APP.completedTasks));
 }
 
 function timer(obj) {
@@ -313,7 +305,7 @@ function timer(obj) {
 }
 
 function formatTime(timerObj) {
-	return `${timerObj.minutes > 9 ? timerObj.minutes : '0'+timerObj.minutes}:${timerObj.seconds > 9 ? timerObj.seconds : '0'+timerObj.seconds}`
+	return `${timerObj.minutes > 9 ? timerObj.minutes : '0'+timerObj.minutes}:${timerObj.seconds > 9 ? timerObj.seconds : '0'+timerObj.seconds}`;
 }
 
 function hideBody(head, body, lighter){
