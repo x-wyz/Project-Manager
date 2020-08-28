@@ -17,17 +17,27 @@ body {
 	padding: 0.8em;
 	margin: 0.14em;
 	margin-top: 0.28em;
-	transition: background 0.25s;
+	transition: all 0.25s;
 	background: var(--bg-color-1);
+	color: var(--color-text-fade);
 	box-sizing: border-box;
 }
 
 .button:hover {
 	background: var(--header-color);
+	color: var(--color-text-clear);
 }
 
 #play {
 	width: 200%;
+	background: var(--input-important);
+	transition: background 0.25s;
+	color: var(--font-color);
+	border: 0;
+}
+
+#play:hover {
+	background: var(--input-important-hover);
 }
 
 #timer {

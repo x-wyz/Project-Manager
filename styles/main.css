@@ -24,7 +24,7 @@ body{
   --input-important: orange;
   --input-important-hover: rgb(217, 140, 0);
 
-  --color-text-fade: rgba(255, 255, 255, 0.35);
+  --color-text-fade: rgba(255, 255, 255, 0.45);
   --color-text-clear: rgba(255, 255, 255, 1);
 }
 

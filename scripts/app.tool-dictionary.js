@@ -38,6 +38,10 @@ function define(word) {
 	})
 	.catch( error => {
 		DICTIONARY.clear();
+		if (error.toString() == 'Error: Network Error') {
+			DICTIONARY.addDefinition(`Unable to connect to the internet.`, 'Network Error');
+			return;
+		}
 		DICTIONARY.addDefinition(`Unable to lookup definition for: ${DICTIONARY.word.value}`, 'Error');
 		DICTIONARY.word.value = '';
 	})

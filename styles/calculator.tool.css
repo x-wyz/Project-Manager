@@ -11,13 +11,15 @@ body{
 	width: 100%;
 	padding: 0.7em;
 	margin: 0.14em;
-	transition: background 0.25s;
+	transition: all 0.25s;
 	background: var(--bg-color-1);
 	box-sizing: border-box;
+	color: var(--color-text-fade);
 }
 
 .p-button:hover {
 	background: var(--header-color);
+	color: var(--color-text-clear);
 }
 
 .col-1 {
@@ -42,4 +44,14 @@ body{
 	font-size: 20px;
 	text-align: right;
 	box-sizing: border-box;
+}
+
+#equal {
+	border: 2px solid var(--input-important-hover);
+	background: var(--input-important);
+	transition: all 0.25s;
+}
+
+#equal:hover {
+	background: var(--input-important-hover);
 }
