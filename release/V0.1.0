@@ -1,0 +1,34 @@
+Release Notes V0.1.0
+-
+
+Features MAIN
+-
+	Major branch - Used to plan out project features and add notes for each features
+		- User can add notes to each branch
+		- User can remove a branch
+		- User can lock the branch from being edited/removed (superficial)
+
+	Minor branch - Used for daily or quickly completed tasks
+		- User can set a task as the current task
+		- User can remove a task from this branch
+		- User can complete a task
+
+	Schedule - Tasks organized by the time set prior to adding the tasks
+			 - Main purpose is to set reminders for future events
+		- User can remove a scheduled task
+
+	Completed container - Contains all completed tasks from the minor branch with their time if
+					      the task was set as current at any point.
+
+	File System - Currently user is able to create, open, or save a project. However open current
+				  exists only to test connectivity to the file system and doesn't actually build the
+				  project after selectin the file.
+	
+SECONDAY
+	Calculator - A basic calculator. Riddled with bugs, did not use eval.
+	Dictionary - Uses owlbot-js to lookup works in the english dictionary. Internet access required.
+	Pomodoro - User can set a timer. Just a visual clock at the moment.
+
+V0.2.0
+	The next patche will not contain any new features and will focus more on bugfixes and making the
+	interface more appealing as well as improve the functionality of some features.
