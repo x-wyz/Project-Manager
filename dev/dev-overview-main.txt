@@ -16,13 +16,13 @@ Completed(for V0.1.0)
 
 Next
 -
-- Notes Area
-
-Incomplete
--
 - Create project
 - Open project
 - Save project
+
+Incomplete
+-
+- Notes Area
 - Music player
 - Passdata from secondary tools to main
 

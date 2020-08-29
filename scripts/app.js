@@ -1,6 +1,7 @@
 const path = require('path');
 const { getElement, compileElement, createElement } = require(path.join(__dirname, 'scripts/element-functions'));
 const { openWindow } = require(path.join(__dirname, 'scripts/electron-window'));
+const { createNewProject:createProject, saveProject:save, openProject:open } = require(path.join(__dirname, 'scripts/filesystem'));
 const { v4: generateId } = require('uuid');
 
 const APP = {
@@ -39,6 +40,10 @@ const APP = {
 		notebooks: getElement('notebooks'),
 		pomodoro: getElement('pomodoro')
 	},
+	// File system elements
+	createNewProject: getElement('tool-create-project'),
+	openProject: getElement('tool-open-project'),
+	saveProject: getElement('tool-save-project'),
 	// Timer
 	currentTimer: null,
 	clearTimer: function(){
@@ -52,8 +57,27 @@ const APP = {
 	majorTasks: {},
 	minorTasks: {},
 	completedTasks: {},
-	scheduleTasks: []
+	scheduleTasks: [],
+	resetToDefault: function(){
+		location.reload();
+	},
+	saveData: function(){
+		return {
+			major: this.majorTasks,
+			minor: this.minorTasks,
+			completed: this.completedTasks,
+			scheduled: this.scheduleTasks
+		};
+	},
+	buildProject: function(data){
+		// Code to build project
+		// Requires editing exsisting task adder functions
+		// This also needs to have a proper reset not refresh else code will ff upon refreshing
+		// V0.2.0
+	}
 }
+APP.resetToDefault = APP.resetToDefault.bind(APP);
+APP.saveData = APP.saveData.bind(APP);
 
 function addMajorTask() {
 	const { newTaskText:text, majorTasks:tasks, majorContainer:container } = APP;
@@ -347,3 +371,7 @@ hideBody(APP.completedHeader, APP.completedContainer, APP.completedLighter);
 
 // Sets value of calandar to today on app launch
 APP.setCurrentDate();
+
+APP.createNewProject.addEventListener('click', () => createProject(APP.resetToDefault));
+APP.saveProject.addEventListener('click', () => save(APP.saveData()));
+APP.openProject.addEventListener('click', () => open(APP.buildProject);
