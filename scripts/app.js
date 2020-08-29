@@ -60,6 +60,7 @@ function addMajorTask() {
 	if (!text.value) return;
 
 	function addNotesHandler(field, container) {
+		if (!field.value) return;
 	 	const newNote = document.createElement('div');
 
 	 	const noteText = createElement(field.value, ['notes-text']);
@@ -83,14 +84,15 @@ function addMajorTask() {
 	}
 
 	const task = document.createElement('div');
+	const btnContainer = document.createElement('div');
 	const general = document.createElement('div');
 	const notes = document.createElement('div');
 	const newNotes = document.createElement('div');
 
-	const taskText = createElement(text.value, ['task-text']);
-	const addNotes = createElement('+Note', ['task-note', 'task-btn'], 'button');
-	const taskLock = createElement('LK', ['task-complete', 'task-btn'], 'button');
-	const taskRemove = createElement('RM', ['task-complete', 'task-btn'], 'button');
+	const taskText = createElement(text.value, ['task-text-major']);
+	const addNotes = createElement('+Note', ['task-note', 'task-btn-major'], 'button');
+	const taskLock = createElement('LK', ['lock-major', 'task-btn-major'], 'button');
+	const taskRemove = createElement('RM', ['remove-major', 'task-btn-major'], 'button');
 
 	const inputField = document.createElement("input");
 	const addNotesBtn = createElement("+", ['add-notes', 'notes-btn'], 'button');
@@ -99,17 +101,22 @@ function addMajorTask() {
 	inputField.classList.add("new-notes-field");
 
 	compileElement(newNotes, [inputField, addNotesBtn]);
+	compileElement(btnContainer, [addNotes, taskLock, taskRemove])
 
 	newNotes.classList.add('hidden');
+	newNotes.classList.add('new-notes-container');
+	btnContainer.classList.add('btn-container');
+	notes.classList.add('notes-container');
+	general.classList.add('major-task-controller');
 
-	compileElement(general, [taskText, addNotes, taskLock, taskRemove]);
+	compileElement(general, [taskText, btnContainer]);
 	compileElement(task, [general, newNotes, notes]);
 
 	const uuid = generateId();
 
 	task.id = uuid;
 
-	task.classList.add('generated-task');
+	task.classList.add('generated-task-major');
 
 	container.appendChild(task);
 
@@ -208,9 +215,11 @@ function organizeSchedule() {
 	tasks.sort((a, b) => a.date - b.date);
 
 	tasks.forEach(task => {
+		const hours = task.date.getHours();
+		const minutes = task.date.getMinutes() > 9 ? task.date.getMinutes() : '0' + task.date.getMinutes();
 		const scheduleTask = document.createElement('div');
 		const taskText = createElement(task.task, ['scheduled-task']);
-		const taskTime = createElement(`${task.date.toDateString()}`, ['date-time']);
+		const taskTime = createElement(`${task.date.toDateString()} | ${hours}:${minutes}`, ['date-time']);
 		const remove = createElement('RM', ['task-remove'], 'button');
 
 		compileElement(scheduleTask, [taskTime, taskText, remove]);

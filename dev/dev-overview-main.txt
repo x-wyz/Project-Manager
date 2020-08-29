@@ -16,17 +16,21 @@ Completed(for V0.1.0)
 
 Next
 -
-- Music player
+- Notes Area
 
 Incomplete
 -
 - Create project
 - Open project
 - Save project
-- Notes Area
+- Music player
+- Passdata from secondary tools to main
+
 
 Distant
 -
 - Notebook
-- Night/Day switch (Unable to transmit data multiple windows deep leading to inconsistency therefore
-  I've decided to not include this feature until I find away to transmit data between windows)
+- Upgrade calculator to scientific && || graphing
+- Graph Creator
+- Integrate with google services (gdrive, gmail, calandar)
+- Night/Day switch
