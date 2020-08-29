@@ -44,7 +44,6 @@ input[type="text"]{
   border: 0;
   outline: none;
   text-align: center;
-  background: var(--input-bg, white);
   box-sizing: border-box;
 }
 

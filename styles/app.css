@@ -111,14 +111,6 @@ button {
 
 /* Column 2 styling */
 
-input {
-	box-sizing: border-box;
-	text-align: center;
-	outline: none;
-	background: var(--input-bg);
-	border: 0;
-}
-
 input[type="text"], input[type="date"] {
 	display: block;
 	margin: 0 auto;
@@ -477,4 +469,42 @@ input.new-notes-field {
 
 #generated-schedule div button:hover {
 	color: var(--color-text-clear);
+}
+
+/* Inputs main */
+
+input {
+	box-sizing: border-box;
+	text-align: center;
+	outline: none;
+	background: rgba(102, 131, 143, 0.2);
+	color: var(--color-text-clear);
+	border: 0;
+	padding: 0.31em;
+}
+
+input::placeholder {
+	color: var(--color-text-fade);
+}
+
+/* Buttons main */
+
+#add-major, #add-minor, #add-schedule {
+	padding: 0.51em;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.65);
+	transition: color 0.25s, background 0.25s;
+}
+
+#add-major {
+	margin-top: 0.1em;
+}
+
+#add-schedule, #add-minor, #add-major {
+	background: var(--input-important-hover);
+}
+
+#add-schedule:hover, #add-minor:hover, #add-major:hover {
+	color: var(--color-text-clear);
+	background: rgba(217, 140, 0, 0.8);
 }
