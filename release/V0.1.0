@@ -29,6 +29,34 @@ SECONDAY
 	Dictionary - Uses owlbot-js to lookup works in the english dictionary. Internet access required.
 	Pomodoro - User can set a timer. Just a visual clock at the moment.
 
+ROADMAP
+-
 V0.2.0
-	The next patche will not contain any new features and will focus more on bugfixes and making the
+	The next patch will not contain any new features and will focus more on bugfixes and making the
 	interface more appealing as well as improve the functionality of some features.
+
+V0.3.0
+	Converts the program to use a more object oriented code style for future extensibility. Once again
+	no new features.
+
+V0.4.0
+	New Features - Music player(main), Notes area 1(main), Notes area 2(generated)
+	Updates - Connects secondary tools to main allowing communication between multiple windows
+	Tools - Calculator bugfix & extension
+			- Scientific/Trigonometry functionality 1
+		  - Pomodoro bugfix & extension
+		  	- Alarm upon reaching 0
+	Convert - calculator, dictionary, pomodoro to a more object like structure
+
+V0.5.0
+	Notebook - details V0.3.0
+
+V0.6.0
+	Graphs creator - details V0.3.0
+
+V0.7.0
+	Calculator - details V0.4.0
+
+V0.8.0 -> V1.0.0
+	Bugfixes, code cleaning and other maintenance
+
